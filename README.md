@@ -1,4 +1,4 @@
-# PriceImpact
+# Price Impact Project
 *Diane PERES and Larysa MATIUKHA*
 
 ---
