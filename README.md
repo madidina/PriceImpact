@@ -18,10 +18,7 @@ Build a file with all the LO : Time, Ask Price, Bid Price, Ask Volum and Bid Vol
   * MergedTimebis.csv: \['Time','Offer_Bid','Row' \]
     * 'Time' 
     * 'Offer' = o, 'Bid' = b or 'Bid and Offer' = ob, 
-
-    * 'Row' of the bid in the file , 'Offer_Row' = row of the offer in the file 
-    OR
-    * 'Row' of the offer in its file, 'Offer_Row' = empty
+    * 'Row' of the bid in the file , 'Offer_Row' = row of the offer in the file OR 'Row' of the offer in its file, 'Offer_Row' = empty
 
 ### 2 step
 
