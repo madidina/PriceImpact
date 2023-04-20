@@ -3,7 +3,7 @@
 
 ---
 ### Data 
-* Files \[ Time in ns; Values \]
+* Files \[ Time; Values \]
   *  Bid Price
   *  Bid Volume
   *  Ask Price
@@ -12,7 +12,16 @@
 
 ### 1 step
 
-Build a file with all the corresponding time between Ask and Bid, Bid Price and Volume and Ask Price and Volume
+Build a file with all the LO : Time, Ask Price, Bid Price, Ask Volum and Bid Volum
+
+* **Merging.py
+ * MergedTimebis.csv: \['Time','Offer_Bid','Row' \]
+   * 'Time' 
+   * 'Offer' = o, 'Bid' = b or 'Bid and Offer' = ob, 
+
+   * 'Row' of the bid in the file , 'Offer_Row' = row of the offer in the file 
+   OR
+   * 'Row' of the offer in its file, 'Offer_Row' = empty
 
 ### 2 step
 
