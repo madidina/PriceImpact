@@ -6,6 +6,7 @@ Created on Fri Apr 21 12:31:28 2023
 @author: madidina
 """
 
+
 from tools import *
 import matplotlib.pyplot as plt
 import numpy as np
@@ -13,8 +14,22 @@ import numpy as np
 merging()
 combinaison()
 extract_spread()
-xtract_mo()
+#extract_mo()
 
+"""
+# Graph of the True price
+T, I, X = imbalance_truePrice()
+
+plt.plot(T,X, label='True Value')
+plt.legend()
+plt.show()
+
+plt.plot(T,I, label='Imablance')
+plt.legend()
+plt.show()
+"""
+
+# Graph of the Distribution
 V, O, R = distribution_MO()
 
 X = np.array(["0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9", "1"])
