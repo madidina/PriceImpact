@@ -15,14 +15,17 @@
 Build a file with all the LO : Time, Ask Price, Bid Price, Ask Volum and Bid Volum
 
 * **Merging.py**
-  * MergedTimebis.csv: \['Time','Offer_Bid','Row' \]
+  * *function merging* output MergedTimebis.csv: \['Time','Offer_Bid','Row' \]
     * 'Time' 
     * 'Offer' = o, 'Bid' = b or 'Bid and Offer' = ob, 
     * 'Row' of the bid in the file , 'Offer_Row' = row of the offer in the file OR 'Row' of the offer in its file, 'Offer_Row' = empty
 
 ### 2nd step
 In this step we will focus on specific values of the spread.
-We Buil the same file as the first step but only with a specific spread
+
+We Buil a LO file with Time, Price and Volum for Bid and Ask.
+
+Then we only select a specific spread or range of spread.
 
 Spread = Bid - Ask
 
