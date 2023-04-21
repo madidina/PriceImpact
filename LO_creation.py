@@ -16,7 +16,7 @@ bid_volume_file = open('./bid_Volume_File_3251758.csv')
 offer_price_file = open('./offer_Price_File_3251758.csv')
 offer_volume_file = open('./offer_Volume_File_3251758.csv')
 
-# In[1]
+# In[1]:
 def combinaison(total_file, b_price_file, b_volume_file, o_price_file, o_volume_file):
     
     """
@@ -97,3 +97,56 @@ def combinaison(total_file, b_price_file, b_volume_file, o_price_file, o_volume_
         
        
 combinaison(merge_file, bid_price_file, bid_volume_file, offer_price_file, offer_volume_file)
+
+# In[2]
+    
+price_volum_file = open('/Users/madidina/Library/Mobile Documents/com~apple~CloudDocs/TELECOM/3A/IIT/MATH-594/SecondStep/LO_File')
+
+def extract_spread(Price_Volume_File, s=1, epsilon=0.5):
+    """
+
+    Parameters
+    ----------
+    s : int 
+        the value of the spread, set to 1 by default 
+        
+    epsilon : int
+        range of spread 
+        
+    Price_Volume_File : csv
+        ['Bid_Time', 'Bid_Price', 'Bid_Volume', 'Offer_Time', 'Offer_Price', 'Offer_Volume']
+
+    Returns
+    -------
+    same file with only the lines where spread = s ± epsilon (set at 1±.5 by default)
+
+    """    
+    
+    csv_price_volum_file = pd.read_csv(price_volum_file)
+
+    # Init Lists
+    total_list=[]
+    
+    print('lists creation')
+
+    for index,row in csv_price_volum_file.iterrows():
+                
+        spread = row[3] - row[1]
+        
+        if spread < s+epsilon and spread > s-epsilon:
+            total_list.append(row)
+    # CSV file creation
+    print('csv creation')
+    
+    # field name 
+    fields = ['Time', 'Bid_Price', 'Bid_Volume', 'Offer_Price', 'Offer_Volume']
+    
+    with open('LO_File_spread', 'w') as f:
+          
+        # using csv.writer method from CSV package
+        write = csv.writer(f)
+          
+        write.writerow(fields)
+        write.writerows(total_list) 
+     
+extract_spread(price_volum_file)
