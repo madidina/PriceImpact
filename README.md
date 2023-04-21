@@ -22,7 +22,7 @@ Build a file with all the LO : Time, Ask Price, Bid Price, Ask Volum and Bid Vol
 
 ### 2 step
 
-Buil a same file but only with spread = Bid - Ask = 1
+Buil a same file but only with a specific spread = Bid - Ask
 
 ### 3 step
 
