@@ -23,8 +23,8 @@ Build a file with all the LO : Time, Ask Price, Bid Price, Ask Volum and Bid Vol
 ### 2nd step
 In this step we will focus on specific values of the spread (Spread = Bid - Ask)
 
-* **combinaisonPriceVolume.py**
-  * *function combi* output LO_File.csv: \['Time','Bid_Price','Bid_Volume','Offer_Price','Offer_Volume' \]
+* **LO_creation.py**
+  * *function combinaison* output LO_File.csv: \['Time','Bid_Price','Bid_Volume','Offer_Price','Offer_Volume' \]
   * *function extract_spread* output the same file with a selected spread
 
 
