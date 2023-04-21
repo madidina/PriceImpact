@@ -21,13 +21,12 @@ Build a file with all the LO : Time, Ask Price, Bid Price, Ask Volum and Bid Vol
     * 'Row' of the bid in the file , 'Offer_Row' = row of the offer in the file OR 'Row' of the offer in its file, 'Offer_Row' = empty
 
 ### 2nd step
-In this step we will focus on specific values of the spread.
+In this step we will focus on specific values of the spread (Spread = Bid - Ask)
 
-We Buil a LO file with Time, Price and Volum for Bid and Ask.
+* **combinaisonPriceVolume.py**
+  * *function combi* output LO_File.csv: \['Time','Bid_Price','Bid_Volume','Offer_Price','Offer_Volume' \]
+  * *function extract_spread* output the same file with a selected spread
 
-Then we only select a specific spread or range of spread.
-
-Spread = Bid - Ask
 
 ### 3d step
 
