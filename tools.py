@@ -287,7 +287,7 @@ def extract_mo(MO_File = 'Data/MO_File_3251758.csv', LO_File = 'LO_File_spread')
         
 # In[5]:
 
-def imbalance(LO_File = 'LO_File_spread'):
+def imbalance_truePrice(LO_File = 'LO_File_spread'):
     """
 
     Parameters
@@ -307,6 +307,8 @@ def imbalance(LO_File = 'LO_File_spread'):
 
     T = [] # Time List
     I = [] # in [0,1]
+    X = [] # True Price List
+
     print('imbalance list creation')
     for index,row in lo.iterrows():
     
@@ -314,9 +316,13 @@ def imbalance(LO_File = 'LO_File_spread'):
         
         # I_t = V^b / (V^a + V^b)
         I.append(row[2]/(row[4]+row[2]))
+        
+        #X_t = B_t + I_t.(A_t-B_t)
+        xt = row[1] + I[-1] * (row[4] - row[1])
+        X.append(xt)
     
     print('imblance list created')
-    return(I,T)
+    return(T, I, X)
 
 # In[6]
 
@@ -339,7 +345,7 @@ def distribution_MO(MO_File = 'Data/MO_File_3251758.csv'):
     mo_csv = open(MO_File)
     mo = pd.read_csv(mo_csv)
     
-    I, T = imbalance()
+    T, I, X = imbalance_truePrice()
     T = np.array(T)
     
     J  = [0. , 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1. ]
@@ -410,3 +416,4 @@ def distribution_MO(MO_File = 'Data/MO_File_3251758.csv'):
     return(dV, dO, R)
 
 # In[7]
+
