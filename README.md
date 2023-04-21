@@ -21,8 +21,8 @@ Build a file with all the LO : Time, Ask Price, Bid Price, Ask Volum and Bid Vol
     * 'Row' of the bid in the file , 'Offer_Row' = row of the offer in the file OR 'Row' of the offer in its file, 'Offer_Row' = empty
 
 ### 2 step
-
-Buil a same file but only with a specific spread = Bid - Ask
+In this step we will focus on specific values of the spread.
+Buil the same file but only with a specific spread = Bid - Ask
 
 ### 3 step
 
