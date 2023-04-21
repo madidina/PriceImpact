@@ -41,6 +41,7 @@ def distribution_MO(mo_file,I, T):
     
     J  = [0. , 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1. ]
     dV = [0]*10
+    dO = [0]*10
     T = np.array(T)
     R = []
     error = 0
@@ -60,8 +61,10 @@ def distribution_MO(mo_file,I, T):
                 
                 if row[1]=='b': 
                     dV[j-1]+= row[2]
+                    dO[j-1]+= 1
                 elif row[1]=='s':
                     dV[j-1]-= row[2]
+                    dO[j-1]-= 1
 
                 R.append(0)
             
@@ -74,8 +77,10 @@ def distribution_MO(mo_file,I, T):
                     
                 if row[1]=='b': 
                     dV[j-1]+= row[2]
+                    dO[j-1]+= 1
                 elif row[1]=='s':
                     dV[j-1]-= row[2]
+                    dO[j-1]-= 1
                 
                 R.append(ratio)
                 
@@ -89,8 +94,10 @@ def distribution_MO(mo_file,I, T):
                     
                 if row[1]=='b': 
                     dV[j-1]+= row[2]
+                    dO[j-1]+= 1
                 elif row[1]=='s':
                     dV[j-1]-= row[2]
+                    dO[j-1]-= 1
                 
                 R.append(ratio)
             
@@ -98,13 +105,20 @@ def distribution_MO(mo_file,I, T):
                 #print(index)
                 error +=1
     print(f'there is {error} times where T[t+1] - T[t] or T[t] - T[t-1] is null' ) 
-    return(dV, R)
+    return(dV, dO, R)
 
-V, R = distribution_MO(mo, I, T)
+V, O, R = distribution_MO(mo, I, T)
+
 X = np.array(["0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9", "1"])
-Y = np.array(V)
 Y = np.array(np.absolute(V))
+Z = np.array(np.absolute(O))
+
 plt.bar(X,Y)
+plt.title('Distribution of traded volume across imbalance levels, when the spread = 1±.5')
+plt.show()
+
+plt.bar(X,Z)
+plt.title('Distribution of theta across imbalance levels,when the spread = 1±.5')
 plt.show()
 
 #plt.hist(R) #ratio in null
