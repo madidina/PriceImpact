@@ -96,15 +96,15 @@ def combinaison(total_file, b_price_file, b_volume_file, o_price_file, o_volume_
         write.writerows(total_list)      
         
        
-combinaison(merge_file, bid_price_file, bid_volume_file, offer_price_file, offer_volume_file)
+#combinaison(merge_file, bid_price_file, bid_volume_file, offer_price_file, offer_volume_file)
 
 # In[2]
     
-price_volum_file = open('/Users/madidina/Library/Mobile Documents/com~apple~CloudDocs/TELECOM/3A/IIT/MATH-594/SecondStep/LO_File')
+lo_file = open('/Users/madidina/Library/Mobile Documents/com~apple~CloudDocs/TELECOM/3A/IIT/MATH-594/SecondStep/LO_File')
 
-def extract_spread(Price_Volume_File, s=1, epsilon=0.5):
+def extract_spread(Price_Volume_File, spread=1, epsilon=0.5):
     """
-
+    
     Parameters
     ----------
     s : int 
@@ -114,26 +114,26 @@ def extract_spread(Price_Volume_File, s=1, epsilon=0.5):
         range of spread 
         
     Price_Volume_File : csv
-        ['Bid_Time', 'Bid_Price', 'Bid_Volume', 'Offer_Time', 'Offer_Price', 'Offer_Volume']
+        ['Time', 'Bid_Price', 'Bid_Volume', 'Offer_Price', 'Offer_Volume']
 
     Returns
     -------
     same file with only the lines where spread = s ± epsilon (set at 1±.5 by default)
-
+    
     """    
     
-    csv_price_volum_file = pd.read_csv(price_volum_file)
+    csv_lo_file = pd.read_csv(lo_file)
 
     # Init Lists
     total_list=[]
     
     print('lists creation')
 
-    for index,row in csv_price_volum_file.iterrows():
+    for index,row in csv_lo_file.iterrows():
                 
-        spread = row[3] - row[1]
+        s = row[3] - row[1]
         
-        if spread < s+epsilon and spread > s-epsilon:
+        if s < spread+epsilon and s > spread-epsilon:
             total_list.append(row)
     # CSV file creation
     print('csv creation')
@@ -149,4 +149,57 @@ def extract_spread(Price_Volume_File, s=1, epsilon=0.5):
         write.writerow(fields)
         write.writerows(total_list) 
      
-extract_spread(price_volum_file)
+#extract_spread(lo_file)
+
+ # In[3]
+
+mo_file = open('/Users/madidina/Library/Mobile Documents/com~apple~CloudDocs/TELECOM/3A/IIT/MATH-594/SecondStep/MO_File_3251758.csv')
+lo_file_spread = open('LO_File_spread')
+
+     
+def extract_mo_spread(mo_file, lo_file_spread):
+    """
+    Parameters
+    ----------
+    mo_file : csv
+        ['Time', 'Type', 'Volume']
+    lo_file_spread : csv
+        ['Time', 'Type', 'Volume']
+    Returns
+    -------
+    same file with only the lines where time is also in the lo_file_spread
+
+    """    
+ 
+    csv_mo_file = pd.read_csv(mo_file)
+    csv_price_volume_file=pd.read_csv(lo_file_spread)
+    
+    mo_time, volum_time = [], []
+    
+    for index, row in csv_mo_file.iterrows():
+        mo_time.append(row[0])
+    
+    for index, row in csv_price_volume_file.iterrows():
+        volum_time.append(row[0])
+    
+    print(f'There is {len(mo_time)} MO times and {len(volum_time)} spread times')
+    
+    intersection_time_spread1 = np.intersect1d(mo_time,volum_time)
+    print(f'There is {len(intersection_time_spread1)} intersection times')
+    
+    print('lists creation')
+
+    total = []
+    
+    for index, row in csv_mo_file.iterrows():
+        if row[0] in intersection_time_spread1:
+            total.append(row)
+    
+    with open('MO_File_spread', 'w') as f:
+          
+        # using csv.writer method from CSV package
+        write = csv.writer(f)
+          
+        write.writerows(total) 
+  
+extract_mo_spread(mo_file, lo_file_spread)
