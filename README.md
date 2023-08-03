@@ -2,6 +2,9 @@
 *Diane PERES and Larysa MATIUKHA*
 
 ---
+The project is explain in the pdf document 
+
+
 ### Data 
 * Files \[ Time; Values \]
   *  Bid Price
